@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+<title>Londinium - Add Sale</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/londinium-theme.css" rel="stylesheet" type="text/css">
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<link href="css/icons.css" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="js/plugins/interface/daterangepicker.js"></script>
+<script type="text/javascript" src="js/plugins/interface/moment.js"></script>
+<script type="text/javascript" src="js/plugins/interface/jgrowl.min.js"></script>
+
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/application_blank.js"></script>
+
+</head>
+
+<body>
+
+	<!-- Navbar -->
+	<div class="navbar navbar-inverse" role="navigation">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#"><img src="images/logo.png" alt="Londinium"></a>
+			<a class="sidebar-toggle"><i class="icon-plus-circle"></i></a>
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-icons">
+				<span class="sr-only">Toggle navbar</span>
+				<i class="icon-grid3"></i>
+			</button>
+			<button type="button" class="navbar-toggle offcanvas">
+				<span class="sr-only">Toggle navigation</span>
+				<i class="icon-paragraph-justify2"></i>
+			</button>
+		</div>
+
+		<ul class="nav navbar-nav navbar-right collapse" id="navbar-icons">
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown">
+					<i class="icon-notification"></i>
+					<span class="label label-default">2</span>
+				</a>
+				<div class="popup dropdown-menu dropdown-menu-right">
+					<div class="popup-header">
+						<a href="#" class="pull-left"><i class="icon-spinner7"></i></a>
+						<span>Notifications</span>
+						<a href="#" class="pull-right"><i class="icon-paragraph-justify"></i></a>
+					</div>
+	                <ul class="activity">
+		                <li>
+		                	<i class="icon-cart-checkout text-success"></i>
+		                	<div>
+			                	<a href="#">Eugene</a> ordered 2 copies of <a href="#">OEM license</a>
+			                	<span>14 minutes ago</span>
+		                	</div>
+		                </li>
+		                <li>
+		                	<i class="icon-heart text-danger"></i>
+		                	<div>
+			                	Your <a href="#">latest post</a> was liked by <a href="#">Audrey Mall</a>
+			                	<span>35 minutes ago</span>
+		                	</div>
+		                </li>
+		                <li>
+		                	<i class="icon-checkmark3 text-success"></i>
+		                	<div>
+			                	Mail server was updated. See <a href="#">changelog</a>
+			                	<span>About 2 hours ago</span>
+		                	</div>
+		                </li>
+		                <li>
+		                	<i class="icon-paragraph-justify2 text-warning"></i>
+		                	<div>
+			                	There are <a href="#">6 new tasks</a> waiting for you. Don't forget!
+			                	<span>About 3 hours ago</span>
+		                	</div>
+		                </li>
+	                </ul>
+                </div>
+			</li>
+
+			<li class="user dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown">
+					<span>Rahila Sule</span>
+					
+				</a>
+			</li>
+			<ul class="nav navbar-nav navbar-right collapse" id="navbar-icons">
+				<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown">
+					<span>Log Out</span>
+				</a>
+			</li>
+			</ul>
+
+		</ul>
+	</div>
+	<!-- /navbar -->
+
+
+	<!-- Page container -->
+ 	<div class="page-container">
+
+
+		<!-- Sidebar -->
+		<div class="sidebar">
+			<div class="sidebar-content">
+
+
+				<!-- Main navigation -->
+				<ul class="navigation">
+					<li><a href="homepage.html"><span>Dashboard</span> <i class="icon-screen2"></i></a></li>
+					<li class="active">
+						<a href="viewsales.php"><span>Sales</span> <i class="icon-stats2"></i></a>
+					</li>
+					<li>
+						<a href="viewproducts.php"><span>Products</span> <i class="icon-basket2"></i></a>
+						<ul>
+							<li><a href="viewproducts.php">All stock</a></li>
+							<li><a href="viewproducts_instock.php">In stock</a></li>
+							<li><a href="viewproducts_lowstock.php">Low stock</a></li>
+							<li><a href="viewproducts_soldout.php">Sold out</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="viewcustomers.php"><span>Customers</span> <i class="icon-users"></i></a>
+					</li>
+					<li>
+						<a href="viewreceivables.php"><span>Receivables</span> <i class="icon-coin"></i></a>
+					</li>
+				</ul>
+				<!-- /main navigation -->
+
+			</div>
+		</div>
+		<!-- /sidebar -->
+
+
+		<!-- Page content -->
+	 	<div class="page-content">
+
+
+			<!-- Page header -->
+			<div class="page-header" style="text-align:right; margin:20px;">
+				
+                    <button type="submit" class="btn btn-primary" style="margin-right:10px">Save</button>
+                    <a href="viewcustomers.html"><button type="button" class="btn btn-danger" style="margin-right:10px">Cancel</button></a>
+				
+			</div>
+			<!-- /page header -->
+
+
+			<!-- New Sale -->
+	        <div class="panel panel-default">
+		        <div class="panel-heading">
+			        <h6 class="panel-title"><i class="icon-coin"></i> New Sale</h6>
+                	<div class="dropdown pull-right">
+                    	<a href="#" class="dropdown-toggle panel-icon" data-toggle="dropdown">
+	                    	<i class="icon-cog3"></i> 
+	                    	<b class="caret"></b>
+                    	</a>
+						<ul class="dropdown-menu icons-right dropdown-menu-right">
+							<li><a href="#"><i class="icon-download"></i> Download invoice</a></li>
+							<li><a href="#"><i class="icon-file-pdf"></i> View .pdf</a></li>
+						</ul>
+                	</div>
+		        </div>
+
+				<div class="panel-body">
+
+					<div class="row invoice-header">
+						<div class="col-sm-6">
+							<h3>Add Sale</h3>
+						</div>
+
+						<div class="col-sm-6">
+ 							<ul class="invoice-details">
+								<li>Invoice # <strong class="text-danger">4759</strong></li>
+								<li>Date of Invoice: <strong>01-24-2012</strong></li>
+								<li>Due Date: <strong>02-10-2012</strong></li>
+							</ul>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-sm-5">
+							<h6>Invoice To:</h6>
+ 							<ul>
+								<li><a href="#">Hiram Roth</a></li>
+								<li>United Federation of Planets</li>
+								<li><a href="#">president.roth@ufop.uni</a></li>
+								<li>2269 Elba Lane</li>
+								<li>Paris</li>
+								<li>France</li>
+								<li>888-555-2311</li>
+							</ul>
+						</div>
+
+
+						<div class="col-sm-4">
+							<h6>Invoice From:</h6>
+ 							<ul>
+								<li><a href="#">Admiral Valdore</a></li>
+								<li>Romulan Empire</li>
+								<li><a href="#">admiral.valdore@theempire.uni</a></li>
+								<li>5151 Pardek Memorial Way</li>
+								<li>Krocton Segment</li>
+								<li>Romulus</li>
+								<li>000-555-9988</li>
+							</ul>
+						</div>
+
+
+						<div class="col-sm-3">
+							<h6>Invoice Details:</h6>
+							<ul>
+								<li>Total hours spent: <strong class="pull-right">379</strong></li>
+								<li>Responsible: <a href="#" class="pull-right">Eugene Kopyov</a></li>
+								<li>Issued by: <a href="#" class="pull-right">Jennifer Notes</a></li>
+								<li>Payment method: <strong class="pull-right">Wire transfer</strong></li>
+								<li class="invoice-status"><strong>Current status:</strong> <div class="label label-danger pull-right">Unpaid</div></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="table-responsive">
+				    <table class="table table-striped table-bordered">
+				        <thead>
+				            <tr>
+				                <th>Product</th>
+				                <th>Descrition</th>
+				                <th>Discount</th>
+				                <th>Total</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				            <tr>
+				                <td>Concept</td>
+				                <td>Creating project concept and logic</td>
+				                <td>0</td>
+				                <td><strong>$1,100</strong></td>
+				            </tr>
+				            <tr>
+				                <td>General design</td>
+				                <td>Design prototype</td>
+				                <td>0</td>
+				                <td><strong>$2,000</strong></td>
+				            </tr>
+				            <tr>
+				                <td>Front end development</td>
+				                <td>Coding and connecting front end</td>
+				                <td>0</td>
+				                <td><strong>$1,600</strong></td>
+				            </tr>
+				            <tr>
+				                <td>Database</td>
+				                <td>Creating and connecting database</td>
+				                <td>0</td>
+				                <td><strong>$890</strong></td>
+				            </tr>
+				        </tbody>
+				    </table>
+				</div>
+
+				<div class="panel-body">
+					<div class="row invoice-payment">
+						<div class="col-sm-8">
+							<h6>Payment method:</h6>
+							<label class="radio">
+								<input type="radio" name="payment-unpaid" class="styled">
+								Checkout with Google
+							</label>
+							<label class="radio">
+								<input type="radio" name="payment-unpaid" class="styled">
+								Checkout with Amazon
+							</label>
+							<label class="radio">
+								<input type="radio" name="payment-unpaid" class="styled" checked="checked">
+								Wire transfer
+							</label>
+							<label class="radio">
+								<input type="radio" name="payment-unpaid" class="styled">
+								Checkout with Paypal
+							</label>
+							<label class="radio">
+								<input type="radio" name="payment-unpaid" class="styled">
+								Checkout with Skrill
+							</label>
+						</div>
+
+						<div class="col-sm-4">
+							<h6>Total:</h6>
+							<table class="table">
+								<tbody>
+									<tr>
+										<th>Subtotal:</th>
+										<td class="text-right">$103,850</td>
+									</tr>
+									<tr>
+										<th>Tax:</th>
+										<td class="text-right">$5,192</td>
+									</tr>
+									<tr>
+										<th>Total:</th>
+										<td class="text-right text-danger"><h6>$109,042</h6></td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="btn-group pull-right">
+								<button type="button" class="btn btn-success"><i class="icon-checkbox-partial"></i> Confirm payment</button>
+								<button type="button" class="btn btn-primary"><i class="icon-print2"></i> Print</button>
+							</div>
+						</div>
+					</div>
+
+					<h6>Notes &amp; Information:</h6>
+					This invoice contains a incomplete list of items destroyed by the Federation ship Enterprise on Startdate 5401.6 in an unprovked attacked on a peaceful &amp; wholly scientific mission to Outpost 775.
+					The Romulan people demand immediate compensation for the loss of their Warbird, Shuttle, Cloaking Device, and to a lesser extent thier troops.
+				</div>
+			</div>   
+			<!-- /new sale -->
+
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /content -->
+
+</body>
+</html>
