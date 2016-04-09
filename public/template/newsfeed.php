@@ -7,7 +7,7 @@ session_start(); //add session here to check that employee is logged in
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-<title>mBridge - New Customer</title>
+<title>mBridge - Homepage</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="css/londinium-theme.css" rel="stylesheet" type="text/css">
@@ -15,7 +15,9 @@ session_start(); //add session here to check that employee is logged in
 <link href="css/icons.css" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> -->
+
+<script type="text/javascript" src="js/jquery-2.1.3.js"></script>
 
 <script type="text/javascript" src="js/plugins/interface/daterangepicker.js"></script>
 <script type="text/javascript" src="js/plugins/interface/moment.js"></script>
@@ -23,6 +25,11 @@ session_start(); //add session here to check that employee is logged in
 
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/application_blank.js"></script>
+
+<script type="text/javascript" src="js/plugins/interface/datatables.min.js"></script>
+<script type="text/javascript" src="js/plugins/interface/tabletools.min.js"></script>
+
+
 
 </head>
 
@@ -131,7 +138,7 @@ session_start(); //add session here to check that employee is logged in
 							<li><a href="viewproducts_soldout.php">Sold out</a></li>
 						</ul>
 					</li>
-					<li class="active">
+					<li>
 						<a href="viewcustomers.php"><span>Customers</span> <i class="icon-users"></i></a>
 					</li>
 					<li>
@@ -150,68 +157,34 @@ session_start(); //add session here to check that employee is logged in
 
 
 			<!-- Page header -->
-			<div class="page-header" style="margin:20px;">
-				
-            <h4>New Customer</h4>
+			<div class="page-header" style="margin:30px">
+				<h3 style='font-size:300%; font-family:Lucida Grande'>News Feed</3>
 			</div>
 			<!-- /page header -->
-			<?php 
-			if(isset($_SESSION['reply'])){
-			?>
-			<div class="alert alert-<?php echo $_SESSION['rtype']; ?> fade in block-inner">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <i class="icon-checkmark-circle"></i> <?php echo $_SESSION['reply']; ?> 
-            </div>
-            <?php
-            unset($_SESSION['reply']);
-            unset($_SESSION['rtype']);
-        	}
-        	?>
 
-			<!-- add customer -->
-			<form class="form-horizontal form-bordered" method="post" action="../../application/controllers/add_customer.php" role="form">
-	            <div class="panel panel-default">
-	                <div class="panel-body">
 
-				        <div class="form-group">
-				            <label class="col-sm-2 control-label">Firstname:</label>
-				            <div class="col-sm-4">
-				            	<input type="text" name="fname" class="form-control">
-				            </div>
-				        </div>
+	    	<!-- news feed -->
+            <div class="block">
+			                <div class="datatable">
+				                <table class="table table-hover">
+				              
+				                    <tbody>
+				                    	<?php
+											include("../../application/models/notification.php");
 
-				         <div class="form-group">
-				            <label class="col-sm-2 control-label">Lastname:</label>
-				            <div class="col-sm-4">
-				            	<input type="text" name="lname" class="form-control">
-				            </div>
+											$obj = new notification();
+											$obj->view_all_notifications();
+											while($row=$obj->fetch()){
+												echo "<tr style='display:block; font-family:Tahoma;'><td><h2 style='display:block; color:DarkBlue;'>{$row['message']}</h2> <p style='display:block'><b>{$row['date']}</b>  at {$row['time']}</p></td></tr>";
+											
+											}
+										?>
+				                        
+				                    </tbody>
+				                </table>
+			                </div>
 				        </div>
-				        
-				         <div class="form-group">
-				            <label class="col-sm-2 control-label">Email:</label>
-				            <div class="col-sm-4">
-				            	<input type="text" name="email" class="form-control">
-				            </div>
-				        </div>
-
-				         <div class="form-group">
-				            <label class="col-sm-2 control-label">Phone number:</label>
-				            <div class="col-sm-4">
-				            	<input type="text" name="phone_number" class="form-control">
-				            </div>
-				        </div>
-
-				        <div class="form-group">
-				            <label class="col-sm-2 control-label"></label>
-				            <div class="col-sm-4">
-				            	<button type="submit" class="btn btn-primary" style="margin-right:10px">Save</button>
-                    	<a href="viewcustomers.php"><button type="button" class="btn btn-danger" style="margin-right:10px">Cancel</button></a>
-				            </div>
-				        </div>
-				    </div>
-				</div>
-			</form>
-			<!-- /add customer -->
+	        <!-- /news feed -->
 
 
 		</div>
@@ -220,5 +193,8 @@ session_start(); //add session here to check that employee is logged in
 	</div>
 	<!-- /content -->
 
+	
+</script>
+<script type="text/javascript" src="js/application.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@ session_start(); //add session here to check that employee is logged in
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-<title>Londinium - Products</title>
+<title>mBridge - Products</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="css/londinium-theme.css" rel="stylesheet" type="text/css">
@@ -37,7 +37,7 @@ session_start(); //add session here to check that employee is logged in
 	<!-- Navbar -->
 	<div class="navbar navbar-inverse" role="navigation">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#"><img src="images/logo.png" alt="Londinium"></a>
+			<!-- <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Londinium"></a> -->
 			<!-- <a class="sidebar-toggle"><i class="icon-plus-circle"></i></a> -->
 			<a class="sidebar-toggle" data-container="body" data-html="true" data-trigger="click" data-toggle="popover" data-placement="bottom" data-content="<div><ul><li><a href='addsale.php'>New Sale</a></li>
 			    <li><a href='addproduct.php'>New Product</a></li>
@@ -127,7 +127,7 @@ session_start(); //add session here to check that employee is logged in
 
 				<!-- Main navigation -->
 				<ul class="navigation">
-					<li><a href="homepage.html"><span>Dashboard</span> <i class="icon-screen2"></i></a></li>
+					<li><a href="newsfeed.php"><span>Dashboard</span> <i class="icon-screen2"></i></a></li>
 					<li>
 						<a href="viewsales.php"><span>Sales</span> <i class="icon-stats2"></i></a>
 					</li>
@@ -187,6 +187,7 @@ session_start(); //add session here to check that employee is logged in
 				                            <th>Product Name</th>
 				                            <th>Quantity</th>
 				                            <th>Unit price</th>
+				                            <th>Reorder quantity</th>
 				                            <th></th>
 				                        </tr>
 				                    </thead>
@@ -198,7 +199,7 @@ session_start(); //add session here to check that employee is logged in
 											$obj = new item();
 											$obj->view_lowstock();
 											while($row=$obj->fetch()){
-												echo "<tr><td>{$row['item_id']}</td><td>{$row['item_name']}</td><td>{$row['quantity']}</td><td>{$row['price']}</td><td><a data-toggle='modal' data-target='#editModal' data-id='{$row['item_id']}' data-item_name='{$row['item_name']}' data-quantity='{$row['quantity']}' data-price='{$row['price']}' data-reorder_qty='{$row['reorder_qty']}' data-description='{$row['description']}'>Edit</a></td></tr>";
+												echo "<tr><td>{$row['item_id']}</td><td>{$row['item_name']}</td><td>{$row['quantity']}</td><td>{$row['price']}</td><td>{$row['reorder_qty']}</td><td><a data-toggle='modal' data-target='#editModal' data-id='{$row['item_id']}' data-item_name='{$row['item_name']}' data-quantity='{$row['quantity']}' data-price='{$row['price']}' data-reorder_qty='{$row['reorder_qty']}' data-description='{$row['description']}'>Edit</a></td></tr>";
 											
 											}
 										?>

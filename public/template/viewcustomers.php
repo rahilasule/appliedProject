@@ -7,7 +7,7 @@ session_start(); //add session here to check that employee is logged in
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-<title>Londinium - Customers</title>
+<title>mBridge - Customers</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="css/londinium-theme.css" rel="stylesheet" type="text/css">
@@ -38,7 +38,7 @@ session_start(); //add session here to check that employee is logged in
 	<!-- Navbar -->
 	<div class="navbar navbar-inverse" role="navigation">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#"><img src="images/logo.png" alt="Londinium"></a>
+			<!-- <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Londinium"></a> -->
 			<a class="sidebar-toggle"><i class="icon-plus-circle"></i></a>
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-icons">
 				<span class="sr-only">Toggle navbar</span>

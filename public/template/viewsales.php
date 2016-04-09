@@ -7,7 +7,7 @@ session_start(); //add session here to check that employee is logged in
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-<title>Londinium - Sales</title>
+<title>mBridge - Sales</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="css/londinium-theme.css" rel="stylesheet" type="text/css">
@@ -37,7 +37,7 @@ session_start(); //add session here to check that employee is logged in
 	<!-- Navbar -->
 	<div class="navbar navbar-inverse" role="navigation">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#"><img src="images/logo.png" alt="Londinium"></a>
+			<!-- <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Londinium"></a> -->
 			<!-- <a class="sidebar-toggle"><i class="icon-plus-circle"></i></a> -->
 			<a class="sidebar-toggle" data-container="body" data-html="true" data-trigger="click" data-toggle="popover" data-placement="bottom" data-content="<div><ul><li><a href='addsale.php'>New Sale</a></li>
 			    <li><a href='addproduct.php'>New Product</a></li>
@@ -127,7 +127,7 @@ session_start(); //add session here to check that employee is logged in
 
 				<!-- Main navigation -->
 				<ul class="navigation">
-					<li><a href="homepage.html"><span>Dashboard</span> <i class="icon-screen2"></i></a></li>
+					<li><a href="newsfeed.php"><span>Dashboard</span> <i class="icon-screen2"></i></a></li>
 					<li class="active">
 						<a href="viewsales.php"><span>Sales</span> <i class="icon-stats2"></i></a>
 					</li>
@@ -185,9 +185,12 @@ session_start(); //add session here to check that employee is logged in
 				                        <tr>
 										<th>Sale #</th>
 										<th>Customer Name</th>
+										<th>Employee Name</th>
 										<th>Sale Total</th>
+										<th>Amount Paid</th>
+										<th>Sale Balance</th>
 										<th>Date</th>
-										<th></th>
+										<!-- <th></th> -->
 				                        </tr>
 				                    </thead>
 				                    <tbody>
@@ -198,7 +201,7 @@ session_start(); //add session here to check that employee is logged in
 											$obj = new sale();
 											$obj->view_all_sales();
 											while($row=$obj->fetch()){
-												echo "<tr><td>{$row['sale_id']}</td><td>{$row['fname']} {$row['lname']}</td><td>{$row['sale_total']}</td><td>{$row['date']}</td><td><a data-toggle='modal' data-target='#editModal' data-id='{$row['sale_id']}' data-fname='{$row['fname']}' data-lname='{$row['lname']}' data-price='{$row['sale_total']}' data-date='{$row['date']}'>Edit</a></td></tr>";
+												echo "<tr><td>{$row['sale_id']}</td><td>{$row['cfname']} {$row['clname']}</td><td>{$row['efname']} {$row['elname']}</td><td>{$row['sale_total']}</td><td>{$row['amount_paid']}</td><td>{$row['sale_balance']}</td><td>{$row['date']}</td></tr>";
 											
 											}
 										?>
@@ -214,16 +217,16 @@ session_start(); //add session here to check that employee is logged in
 	</div>
 	<!-- /content -->
 <!-- Form modal -->
-			<div id="editModal" class="modal fade" tabindex="-1" role="dialog">
+			<!-- <div id="editModal" class="modal fade" tabindex="-1" role="dialog">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title"><i class="icon-paragraph-justify2"></i> Edit Product</h4>
-						</div>
+							<h4 class="modal-title"><i class="icon-paragraph-justify2"></i> Edit Sale</h4>
+						</div> -->
 
 						<!-- Form inside modal -->
-						<form method="post" action="../../application/controllers/edit_product.php" role="form">
+						<!-- <form method="post" action="../../application/controllers/edit_sale.php" role="form">
 
 							<div class="modal-body with-padding">
 								
@@ -242,7 +245,7 @@ session_start(); //add session here to check that employee is logged in
 
 				    	<div class="row" style="margin-bottom:10px">
 				         <div class="form-group">
-				            <label class="col-sm-2 control-label">Unit price:</label>
+				            <label class="col-sm-2 control-label">Employee name:</label>
 				            <div class="col-sm-4">
 				            	<input type="text" id="price" name="price" class="form-control">
 				            </div>
@@ -287,31 +290,31 @@ session_start(); //add session here to check that employee is logged in
 						</form>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- /form modal -->
-			<script>
-			$(function(){ //this means document ready
+			// <script>
+			// $(function(){ //this means document ready
 				//alert('hello')
-				$('#editModal').on('show.bs.modal', function(event){ //function runs when edit modal is clicked on
+				// $('#editModal').on('show.bs.modal', function(event){ //function runs when edit modal is clicked on
 					//alert('hiiiiiiii')
-					var button = $(event.relatedTarget) //all attributes of the form are added to this button
-					var id = button.data('id') //this gets data-id in the button, same for below
-					var item_name = button.data('item_name')
-					var price = button.data('price')
-					var quantity = button.data('quantity')
-					var reorder_qty = button.data('reorder_qty')
-					var description = button.data('description')
-					var modal = $(this)
-					modal.find('#id').val(id) //assigns variable from above to id
-					modal.find('#item_name').val(item_name)
-					modal.find('#price').val(price)
-					modal.find('#quantity').val(quantity)
-					modal.find('#reorder_qty').val(reorder_qty)
-					modal.find('#description').val(description)
-				})
+					// var button = $(event.relatedTarget) //all attributes of the form are added to this button
+					// var id = button.data('id') //this gets data-id in the button, same for below
+					// var item_name = button.data('item_name')
+					// var price = button.data('price')
+					// var quantity = button.data('quantity')
+					// var reorder_qty = button.data('reorder_qty')
+					// var description = button.data('description')
+					// var modal = $(this)
+					// modal.find('#id').val(id) //assigns variable from above to id
+			// 		modal.find('#item_name').val(item_name)
+			// 		modal.find('#price').val(price)
+			// 		modal.find('#quantity').val(quantity)
+			// 		modal.find('#reorder_qty').val(reorder_qty)
+			// 		modal.find('#description').val(description)
+			// 	})
 
-			})
-			</script>
+			// })
+			// </script>
 <script type="text/javascript" src="js/application.js"></script>
 </body>
 </html>

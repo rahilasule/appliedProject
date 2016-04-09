@@ -131,7 +131,7 @@ session_start(); //add session here to check that employee is logged in
 
 				<!-- Main navigation -->
 				<ul class="navigation">
-					<li><a href="homepage.html"><span>Dashboard</span> <i class="icon-screen2"></i></a></li>
+					<li><a href="newsfeed.php"><span>Dashboard</span> <i class="icon-screen2"></i></a></li>
 					<li class="active">
 						<a href="viewsales.php"><span>Sales</span> <i class="icon-stats2"></i></a>
 					</li>

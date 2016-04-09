@@ -41,8 +41,8 @@ class sale extends adb
 	//allows view of all sale records
 	function view_all_sales()
 	{
-		$str_query="SELECT sale.sale_id, sale.date, customer.fname, customer.lname, employee.fname,
-		 employee.lname, sale.sale_total, sale.amount_paid, sale.sale_balance FROM sale
+		$str_query="SELECT sale.sale_id, sale.date, customer.fname AS cfname, customer.lname AS clname, employee.fname AS efname,
+		 employee.lname AS elname, sale.sale_total, sale.amount_paid, sale.sale_balance FROM sale
 		 JOIN customer ON sale.customer_id=customer.cid
 		 JOIN employee ON sale.employee_id=employee.eid";
 		return $this->query($str_query);

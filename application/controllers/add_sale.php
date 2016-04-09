@@ -1,6 +1,7 @@
 <?php
 	//add session here to check that employee is logged in
 	include("../application/models/sale.php");
+	include_once("../../application/models/notification.php");
 	if (isset($_REQUEST['item_name'])) {
 		$obj = new sale();
 
@@ -11,6 +12,13 @@
 		$qty = $_REQUEST['qty'];
 		if($obj->add_sale($date, $item_id, $cid, $eid, $qty)){
 			echo "success";
+
+			$msg=$_SESSION['reply'];
+			$date=date("Y-m-d");
+			$time = date("h:i:s");
+
+			$obj1 = new notification();
+			$obj1->add_notification($msg, $time, $date);
 		} else{
 			echo "error";
 		}

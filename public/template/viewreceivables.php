@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-<title>Londinium - Receivables</title>
+<title>mBridge - Receivables</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="css/londinium-theme.css" rel="stylesheet" type="text/css">
@@ -32,7 +32,6 @@
 	<!-- Navbar -->
 	<div class="navbar navbar-inverse" role="navigation">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#"><img src="images/logo.png" alt="Londinium"></a>
 			<a class="sidebar-toggle"><i class="icon-plus-circle"></i></a>
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-icons">
 				<span class="sr-only">Toggle navbar</span>
@@ -119,12 +118,12 @@
 
 				<!-- Main navigation -->
 				<ul class="navigation">
-					<li><a href="homepage.html"><span>Dashboard</span> <i class="icon-screen2"></i></a></li>
+					<li><a href="newsfeed.php"><span>Dashboard</span> <i class="icon-screen2"></i></a></li>
 					<li>
-						<a href="viewsales.html"><span>Sales</span> <i class="icon-stats2"></i></a>
+						<a href="viewsales.php"><span>Sales</span> <i class="icon-stats2"></i></a>
 					</li>
 					<li>
-						<a href="viewproducts.html"><span>Products</span> <i class="icon-basket2"></i></a>
+						<a href="viewproducts.php"><span>Products</span> <i class="icon-basket2"></i></a>
 						<ul>
 							<li><a href="viewproducts.php">All stock</a></li>
 							<li><a href="viewproducts_instock.php">In stock</a></li>
@@ -133,10 +132,10 @@
 						</ul>
 					</li>
 					<li>
-						<a href="viewcustomers.html"><span>Customers</span> <i class="icon-users"></i></a>
+						<a href="viewcustomers.php"><span>Customers</span> <i class="icon-users"></i></a>
 					</li>
 					<li class="active">
-						<a href="viewreceivables.html"><span>Receivables</span> <i class="icon-coin"></i></a>
+						<a href="viewreceivables.php"><span>Receivables</span> <i class="icon-coin"></i></a>
 					</li>
 				</ul>
 				<!-- /main navigation -->
@@ -151,7 +150,7 @@
 
 
 	<!-- Receivables table -->
-            <div class="block">
+            <div class="block" style="margin:30px">
 			                <div class="datatable">
 				                <table class="table table-hover">
 				                    <thead>

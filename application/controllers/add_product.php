@@ -1,6 +1,7 @@
 <?php
 	session_start(); //add session here to check that employee is logged in
 	include("../models/item.php");
+	include("../models/notification.php");
 	if(isset($_REQUEST['item_name'])) {
 		
 		$obj = new item();
@@ -14,6 +15,13 @@
 			// echo"success";
 			$_SESSION['reply'] = "Successfully added $item_name!";
 			$_SESSION['rtype'] = "success";
+
+			$msg=$_SESSION['reply'];
+			$date=date("Y-m-d");
+			$time = date("h:i:s");
+
+			$obj1 = new notification();
+			$obj1->add_notification($msg, $time, $date);
 		} else{
 			// echo"error";
 			$_SESSION['reply'] = "Oops...an error occured.";
