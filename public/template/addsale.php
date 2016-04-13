@@ -159,16 +159,11 @@ session_start(); //add session here to check that employee is logged in
 
 
 		<!-- Page content -->
-		<div class="page-content">
+		<div class="page-content" style="margin-top:10px">
 
 
 			<!-- Page header -->
-			<div class="page-header" style="text-align:right; margin:20px;">
-				
-				<button type="submit" class="btn btn-primary" style="margin-right:10px">Save</button>
-				<a href="viewsales.php"><button type="button" class="btn btn-danger" style="margin-right:10px">Cancel</button></a>
-				
-			</div>
+		
 			<!-- /page header -->
 			<?php 
 			if(isset($_SESSION['reply'])){
@@ -277,7 +272,7 @@ session_start(); //add session here to check that employee is logged in
 					</div>
 
 
-
+					<form>
 
 					<div class="table-responsive">
 						<table class="table table-striped table-bordered">
@@ -290,14 +285,31 @@ session_start(); //add session here to check that employee is logged in
 								</tr>
 							</thead>
 							<tbody>
+								 <?php
+											include("../../application/models/sale.php");
+
+											$obj = new sale();
+											$obj->get_sale_items($sale_id);
+											while($row=$obj->fetch()){
+												echo "<tr><td>{$row['item_id']}</td><td>{$row['quantity']}</td><td>{$row['unit_price']}</td><td>{$row['subtotal']}</td><td><a href='payment.php'>Make payment</a></td></tr>";
+											}
+										?>
 								<tr>
-									<td>Monrovian floral plate set of 4</td>
-									<td>3</td>
-									<td>GHC 76.45</td>
-									<td><strong>GHC 76.45</strong></td>
-								</tr>
-								<tr>
-									<td colspan="4"> + Add a product</td>
+									<td colspan="2"><select data-placeholder="Choose a customer..." class="form-control select-liquid" id="cid">
+												<option value="0">--Add a product--</option>
+												<?php
+												include_once("../../application/models/item.php");
+												$arow = new item();
+												
+												$arow->view_all_items();
+												while($row=$arow->fetch()){
+													echo "<option value='{$row['item_id']}'>{$row['item_name']}</option>";
+													
+												}
+											?>
+										</select></td>
+									<td><input type="text" id= "qty" name="qty" class="form-control"></td>
+									<td><a href=""><button type="button" class="btn btn-primary" style="margin-right:10px">Add product</button> </a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -333,7 +345,16 @@ session_start(); //add session here to check that employee is logged in
 
 									</tbody>
 								</table>
-
+								 <div class="form-group">
+				            <label class="col-sm-2 control-label"></label>
+				            	<div class="page-header" style="text-align:right; margin:20px;">
+				
+				<button type="submit" class="btn btn-primary" style="margin-right:10px">Save</button>
+				<a href="viewsales.php"><button type="button" class="btn btn-danger" style="margin-right:10px">Cancel</button></a>
+				
+			</div>
+				        </div>
+				    </form>
 							</div>
 						</div>
 					</div>

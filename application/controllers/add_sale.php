@@ -1,17 +1,18 @@
 <?php
-	//add session here to check that employee is logged in
-	include("../application/models/sale.php");
-	include_once("../../application/models/notification.php");
-	if (isset($_REQUEST['item_name'])) {
+	session_start();//add session here to check that employee is logged in
+	include("../models/sale.php");
+	include_once("../models/notification.php");
+	if (isset($_REQUEST['cid'])) {
 		$obj = new sale();
 
-		$date = $_REQUEST['date'];
-	    $item_id = $_REQUEST['item_name'];
-	    $cid = $_REQUEST['customer_name'];
-		$eid = $_REQUEST['eid'];
-		$qty = $_REQUEST['qty'];
-		if($obj->add_sale($date, $item_id, $cid, $eid, $qty)){
-			echo "success";
+	    $cid = $_REQUEST['cid'];
+	    $eid = $_REQUEST['eid'];
+		$total = $_REQUEST['total'];
+		$paid = $_REQUEST['paid'];
+		if($obj->add_sale($cid, $eid, $total, $paid)){
+			
+			$_SESSION['reply'] = "Successfully added a new sale!";
+			$_SESSION['rtype'] = "success";
 
 			$msg=$_SESSION['reply'];
 			$date=date("Y-m-d");
@@ -20,15 +21,17 @@
 			$obj1 = new notification();
 			$obj1->add_notification($msg, $time, $date);
 		} else{
-			echo "error";
+			$_SESSION['reply'] = "Oops...an error occured.";
+			$_SESSION['rtype'] = "error";
 		}
 
 		//header("location:viewAfterAdd.php");
 		
 	}	
 ?>
-	<html>
-	<head>
+<?php /*
+	<!-- <html> -->
+<!-- 	<head>
 		<title>Add Sale</title>
 		<script>
 			
@@ -47,12 +50,12 @@
 				<div>Employee Name: <select id="eid">
 							<option value="0">--Select Employee--</option>
 							<?php
-							include_once("../application/models/employee.php");
-							$srow = new employee();
+							// include_once("../application/models/employee.php");
+							// $srow = new employee();
 							
-							$srow->get_employees();
-							while($row=$srow->fetch()){
-								echo "<option value='{$row['eid']}'>{$row['fname']} {$row['lname']}</option>";
+							// $srow->get_employees();
+							// while($row=$srow->fetch()){
+							// 	echo "<option value='{$row['eid']}'>{$row['fname']} {$row['lname']}</option>";
 								
 							}
 						?>
@@ -64,4 +67,5 @@
 				<div><input type="submit" name="submit" value="ADD"></div>
 		</form>
 	</body>
-</html>
+</html> -->
+*/ ?>

@@ -53,7 +53,7 @@
 					<div class="popup-header">
 						<a href="#" class="pull-left"><i class="icon-spinner7"></i></a>
 						<span>Notifications</span>
-						<a href="#" class="pull-right"><i class="icon-paragraph-justify"></i></a>
+						<a href="newsfeed.php" class="pull-right"><i class="icon-paragraph-justify"></i></a>
 					</div>
 	                <ul class="activity">
 		                <li>
@@ -163,20 +163,15 @@
 				                        </tr>
 				                    </thead>
 				                    <tbody>
-				                        <tr>
-				                            <td>1</td>
-				                            <td>Uche Ezeoke</td>
-				                            <td>09-03-2016</td>
-				                            <td>30.00</td>
-				                            <td><a href="makepayment.php">Make payment</a></td>
-				                        </tr>
-				                       <tr>
-				                            <td>3</td>
-				                            <td>Lisa Jones</td>
-				                            <td>08-03-2016</td>
-				                            <td>43.50</td>
-				                            <td><a href="makepayment.php">Make payment</a></td>
-				                        </tr>
+				                       <?php
+											include("../../application/models/sale.php");
+
+											$obj = new sale();
+											$obj->view_receivables();
+											while($row=$obj->fetch()){
+												echo "<tr><td>{$row['sale_id']}</td><td>{$row['customerName']}</td><td>{$row['date']}</td><td>{$row['amount_owed']}</td><td><a href='payment.php'>Make payment</a></td></tr>";
+											}
+										?>
 				                    </tbody>
 				                </table>
 			                </div>
